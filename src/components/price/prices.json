@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_price_prices",
+  "info": {
+    "displayName": "Prices"
+  },
+  "options": {},
+  "attributes": {
+    "price": {
+      "type": "decimal"
+    },
+    "discountedPrice": {
+      "type": "decimal"
+    },
+    "uom": {
+      "type": "string"
+    },
+    "available": {
+      "type": "boolean"
+    }
+  }
+}

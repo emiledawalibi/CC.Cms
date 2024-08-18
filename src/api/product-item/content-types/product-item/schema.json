@@ -38,20 +38,15 @@
         "audios"
       ]
     },
-    "price": {
-      "type": "decimal"
-    },
-    "discountedPrice": {
-      "type": "decimal"
-    },
     "origin": {
       "type": "customField",
       "customField": "plugin::country-select.country"
     },
-    "sizes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::size.size"
+    "price": {
+      "displayName": "Prices",
+      "type": "component",
+      "repeatable": true,
+      "component": "price.prices"
     }
   }
 }

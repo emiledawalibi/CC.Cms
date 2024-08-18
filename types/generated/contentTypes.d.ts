@@ -826,7 +826,8 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   info: {
     singularName: 'category';
     pluralName: 'categories';
-    displayName: 'category';
+    displayName: 'Category';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -976,15 +977,9 @@ export interface ApiProductItemProductItem extends Schema.CollectionType {
     displayName: Attribute.String;
     description: Attribute.Text;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    price: Attribute.Decimal;
-    discountedPrice: Attribute.Decimal;
     origin: Attribute.String &
       Attribute.CustomField<'plugin::country-select.country'>;
-    sizes: Attribute.Relation<
-      'api::product-item.product-item',
-      'oneToMany',
-      'api::size.size'
-    >;
+    price: Attribute.Component<'price.prices', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -999,28 +994,6 @@ export interface ApiProductItemProductItem extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiSizeSize extends Schema.CollectionType {
-  collectionName: 'sizes';
-  info: {
-    singularName: 'size';
-    pluralName: 'sizes';
-    displayName: 'Size';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    value: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::size.size', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::size.size', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1049,7 +1022,6 @@ declare module '@strapi/types' {
       'api::global.global': ApiGlobalGlobal;
       'api::product-group.product-group': ApiProductGroupProductGroup;
       'api::product-item.product-item': ApiProductItemProductItem;
-      'api::size.size': ApiSizeSize;
     }
   }
 }

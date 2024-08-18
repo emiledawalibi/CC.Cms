@@ -62,6 +62,19 @@ export interface SharedMedia extends Schema.Component {
   };
 }
 
+export interface PricePrices extends Schema.Component {
+  collectionName: 'components_price_prices';
+  info: {
+    displayName: 'Prices';
+  };
+  attributes: {
+    price: Attribute.Decimal;
+    discountedPrice: Attribute.Decimal;
+    uom: Attribute.String;
+    available: Attribute.Boolean;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -70,6 +83,7 @@ declare module '@strapi/types' {
       'shared.rich-text': SharedRichText;
       'shared.quote': SharedQuote;
       'shared.media': SharedMedia;
+      'price.prices': PricePrices;
     }
   }
 }
